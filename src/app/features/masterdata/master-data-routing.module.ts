@@ -1,0 +1,32 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+import { MasterdataComponent } from './masterdata.component';
+import { ProductsComponent } from './products/products.component';
+import { AddEditProducts } from './products/add-edit-products/add-edit-products';
+import { CustomersComponent } from './customers/customers.component';
+import { AddEditCustomers } from './customers/add-edit-customers/add-edit-customers';
+
+const routes: Routes = [
+ {
+  path: '',
+  component: MasterdataComponent,
+  children: [
+   // Products
+   { path: 'products', component: ProductsComponent },
+   { path: 'products/add', component: AddEditProducts },
+   { path: 'products/edit/:id', component: AddEditProducts },
+
+   // Customers
+   { path: 'customers', component: CustomersComponent },
+   { path: 'customers/add', component: AddEditCustomers },
+   { path: 'customers/edit/:id', component: AddEditCustomers }
+  ]
+ }
+];
+
+@NgModule({
+ imports: [RouterModule.forChild(routes)],
+ exports: [RouterModule]
+})
+export class MasterDataRoutingModule { }
