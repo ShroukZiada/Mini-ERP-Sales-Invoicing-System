@@ -10,4 +10,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'ERP-Sales-Invoicing-System';
+  test() {
+    alert('ggggggggggggg')
+  }
 }

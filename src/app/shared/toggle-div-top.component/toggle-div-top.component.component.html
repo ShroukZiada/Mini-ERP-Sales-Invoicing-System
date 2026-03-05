@@ -1,0 +1,21 @@
+<div class="card p-3">
+ <!-- Tabs -->
+ <ul class="nav nav-tabs mb-3">
+  <li class="nav-item" *ngFor="let tab of tabs; let i = index">
+   <a class="nav-link" [class.active]="activetabindex === i" (click)="activetabindex = i">
+    {{ tab.name | translate }}
+   </a>
+  </li>
+ </ul>
+
+ <!-- Tab Content -->
+ <div class="tab-content p-3 border rounded bg-light">
+  <!-- Component -->
+  <ng-container *ngIf="tabs[activetabindex]?.componennt" [ngComponentOutlet]="tabs[activetabindex]?.componennt">
+  </ng-container>
+
+  <!-- Template -->
+  <ng-container *ngIf="templates.length > 0" [ngTemplateOutlet]="templates[activetabindex]">
+  </ng-container>
+ </div>
+</div>

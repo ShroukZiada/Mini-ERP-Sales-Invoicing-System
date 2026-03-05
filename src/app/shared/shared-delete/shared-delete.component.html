@@ -1,0 +1,16 @@
+<div class="p-4 text-center">
+
+ <div class="mb-4">
+  <span class="avatar avatar-xxl rounded-circle bg-danger-subtle">
+   <img src="assets/img/icons/trash-icon.svg" alt="trash" class="img-fluid w-auto h-auto" />
+  </span>
+ </div>
+ <h4 class="mb-1">{{ data?.head ??'Delete Confirmation' }}</h4>
+ <p class="mb-4">{{ data?.message ?? 'Are you sure you want to delete?' }}</p>
+ <div class="d-flex justify-content-between gap-2">
+  <a href="javascript:void(0);" class="btn btn-light w-100" (click)="cancel()">{{'Close' }}</a>
+  <a href="javascript:void(0);" class="btn btn-danger w-100" (click)="confirmDelete()">{{'Delete' }}</a>
+ </div>
+
+
+</div>

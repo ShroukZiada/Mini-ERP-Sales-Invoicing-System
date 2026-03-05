@@ -1,0 +1,77 @@
+<div class="container py-4">
+
+ <h4 class="mb-4">{{ 'Customer Details' }}</h4>
+
+ <div class="row g-3">
+
+  <!-- Name -->
+  <div class="col-md-6">
+   <label class="form-label fw-bold">{{ 'name' }}:</label>
+   <p class="form-control-plaintext">{{ customerList?.name || '-' }}</p>
+  </div>
+
+  <!-- Serial -->
+  <div class="col-md-6">
+   <label class="form-label fw-bold">{{ 'serial' }}:</label>
+   <p class="form-control-plaintext">{{ customerList?.serial || '-' }}</p>
+  </div>
+
+  <!-- Phone -->
+  <div class="col-md-6">
+   <label class="form-label fw-bold">{{ 'phone' }}:</label>
+   <p class="form-control-plaintext">{{ customerList?.phone || '-' }}</p>
+  </div>
+
+  <!-- Email -->
+  <div class="col-md-6">
+   <label class="form-label fw-bold">{{ 'email' }}:</label>
+   <p class="form-control-plaintext">{{ customerList?.email || '-' }}</p>
+  </div>
+
+  <!-- National ID -->
+  <div class="col-md-6">
+   <label class="form-label fw-bold">{{ 'nationalId' }}:</label>
+   <p class="form-control-plaintext">{{ customerList?.nationalId || '-' }}</p>
+  </div>
+
+  <!-- Address -->
+  <div class="col-md-6">
+   <label class="form-label fw-bold">{{ 'address' }}:</label>
+   <p class="form-control-plaintext">{{ customerList?.address || '-' }}</p>
+  </div>
+
+  <!-- Responsable Man Name -->
+  <div class="col-md-6">
+   <label class="form-label fw-bold">{{ 'responsableManName' }}:</label>
+   <p class="form-control-plaintext">{{ customerList?.responsableManName || '-' }}</p>
+  </div>
+
+  <!-- Notes -->
+  <div class="col-md-6">
+   <label class="form-label fw-bold">{{ 'notes' }}:</label>
+   <!-- <p class="form-control-plaintext">{{ customerList?.notes || '-' }}</p> -->
+  </div>
+
+  <!-- Switches -->
+  <div class="col-md-12 d-flex gap-3 mt-3">
+   <div class="form-check form-switch">
+    <label class="form-check-label">{{ 'isCustomer' }}</label>
+    <input class="form-check-input" type="checkbox" [checked]="customerList?.isCustomer" disabled>
+   </div>
+
+   <div class="form-check form-switch">
+    <label class="form-check-label">{{ 'isSupplier' }}</label>
+    <input class="form-check-input" type="checkbox" [checked]="customerList?.isSupplier" disabled>
+   </div>
+  </div>
+
+ </div>
+
+ <!-- Back Button -->
+ <div class="mt-4">
+  <button class="btn btn-secondary" (click)="handleClose()">
+   <i class="fa-solid fa-arrow-left me-1"></i> {{ 'Back' }}
+  </button>
+ </div>
+
+</div>

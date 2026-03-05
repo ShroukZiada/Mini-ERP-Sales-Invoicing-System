@@ -1,3 +1,4 @@
-<p>
-  customers works!
-</p>
+<app-shared-table [title]="'Customers'" [columns]="columns" [data]="customers" [showActions]="true"
+  [showAddButton]="true" (add)="addCustomer($event)" (view)="ViewCustomer($event)" (edit)="updateCustomer($event)"
+  (delete)="deleteCustomer($event)">
+</app-shared-table>

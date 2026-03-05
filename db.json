@@ -1,0 +1,18 @@
+{
+  "customers": [
+    {
+      "id": "40ad",
+      "name": "shrouk zaida",
+      "serial": "Sh1000",
+      "phone": "01209030503",
+      "email": "shrouk.zaida1011@gmail.com",
+      "address": "cairo",
+      "nationalId": "11111111111111",
+      "responsableManName": "5555555",
+      "notes": "xx",
+      "isCustomer": true,
+      "isSupplier": true
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

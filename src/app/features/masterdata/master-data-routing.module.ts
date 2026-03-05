@@ -13,9 +13,9 @@ const routes: Routes = [
   component: MasterdataComponent,
   children: [
    // Products
-   { path: 'products', component: ProductsComponent },
-   { path: 'products/add', component: AddEditProducts },
-   { path: 'products/edit/:id', component: AddEditProducts },
+   { path: 'Products', component: ProductsComponent },
+   { path: 'Products/add', component: AddEditProducts },
+   { path: 'Products/edit/:id', component: AddEditProducts },
 
    // Customers
    { path: 'customers', component: CustomersComponent },
