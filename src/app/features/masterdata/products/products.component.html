@@ -1,3 +1,4 @@
-<p>
-  products works!
-</p>
+<app-shared-table [title]="'الأصناف'" [columns]="columns" [data]="protecteList" [showActions]="true"
+  [showAddButton]="true" (add)="addprodect()" (view)="Viewprodect($event)" (edit)="updateprodect($event)"
+  (delete)="deleteprodect($event)">
+</app-shared-table>

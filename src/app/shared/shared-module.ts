@@ -8,5 +8,7 @@ import { ToggleDivTopComponentComponent } from './toggle-div-top.component/toggl
 @NgModule({
   declarations: [],
   imports: [CommonModule, HttpClientModule, SharedTable, ReactiveFormsModule, ToggleDivTopComponentComponent],
+  exports: [ToggleDivTopComponentComponent] // ✅ مهم جدًا
+
 })
 export class SharedModule { }

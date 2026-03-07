@@ -1,66 +1,66 @@
-<div class="container py-4">
+<div class="container py-4" [dir]="'rtl'">
 
- <h4 class="mb-4">{{ 'Customer Details' }}</h4>
+ <h4 class="mb-4">{{ ' بيانات العميل' }}</h4>
 
  <div class="row g-3">
 
   <!-- Name -->
   <div class="col-md-6">
-   <label class="form-label fw-bold">{{ 'name' }}:</label>
+   <label class="form-label fw-bold">{{ 'الاسم' }}:</label>
    <p class="form-control-plaintext">{{ customerList?.name || '-' }}</p>
   </div>
 
   <!-- Serial -->
   <div class="col-md-6">
-   <label class="form-label fw-bold">{{ 'serial' }}:</label>
+   <label class="form-label fw-bold">{{ 'السريال' }}:</label>
    <p class="form-control-plaintext">{{ customerList?.serial || '-' }}</p>
   </div>
 
   <!-- Phone -->
   <div class="col-md-6">
-   <label class="form-label fw-bold">{{ 'phone' }}:</label>
+   <label class="form-label fw-bold">{{ 'الهاتف' }}:</label>
    <p class="form-control-plaintext">{{ customerList?.phone || '-' }}</p>
   </div>
 
   <!-- Email -->
   <div class="col-md-6">
-   <label class="form-label fw-bold">{{ 'email' }}:</label>
+   <label class="form-label fw-bold">{{ 'الأيميل' }}:</label>
    <p class="form-control-plaintext">{{ customerList?.email || '-' }}</p>
   </div>
 
   <!-- National ID -->
   <div class="col-md-6">
-   <label class="form-label fw-bold">{{ 'nationalId' }}:</label>
+   <label class="form-label fw-bold">{{ 'الرقم القومي' }}:</label>
    <p class="form-control-plaintext">{{ customerList?.nationalId || '-' }}</p>
   </div>
 
   <!-- Address -->
   <div class="col-md-6">
-   <label class="form-label fw-bold">{{ 'address' }}:</label>
+   <label class="form-label fw-bold">{{ 'العنوان' }}:</label>
    <p class="form-control-plaintext">{{ customerList?.address || '-' }}</p>
   </div>
 
   <!-- Responsable Man Name -->
   <div class="col-md-6">
-   <label class="form-label fw-bold">{{ 'responsableManName' }}:</label>
+   <label class="form-label fw-bold">{{ 'اسم الرجل المسؤول' }}:</label>
    <p class="form-control-plaintext">{{ customerList?.responsableManName || '-' }}</p>
   </div>
 
   <!-- Notes -->
   <div class="col-md-6">
-   <label class="form-label fw-bold">{{ 'notes' }}:</label>
+   <label class="form-label fw-bold">{{ 'الملاحظات' }}:</label>
    <!-- <p class="form-control-plaintext">{{ customerList?.notes || '-' }}</p> -->
   </div>
 
   <!-- Switches -->
   <div class="col-md-12 d-flex gap-3 mt-3">
    <div class="form-check form-switch">
-    <label class="form-check-label">{{ 'isCustomer' }}</label>
+    <label class="form-check-label">{{ 'هل انت عميل' }}</label>
     <input class="form-check-input" type="checkbox" [checked]="customerList?.isCustomer" disabled>
    </div>
 
    <div class="form-check form-switch">
-    <label class="form-check-label">{{ 'isSupplier' }}</label>
+    <label class="form-check-label">{{ 'هل انت مورد' }}</label>
     <input class="form-check-input" type="checkbox" [checked]="customerList?.isSupplier" disabled>
    </div>
   </div>
@@ -70,7 +70,7 @@
  <!-- Back Button -->
  <div class="mt-4">
   <button class="btn btn-secondary" (click)="handleClose()">
-   <i class="fa-solid fa-arrow-left me-1"></i> {{ 'Back' }}
+   <i class="fa-solid fa-arrow-left me-1"></i> {{ 'اغلاق' }}
   </button>
  </div>
 

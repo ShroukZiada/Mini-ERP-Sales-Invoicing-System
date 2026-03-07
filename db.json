@@ -14,5 +14,43 @@
       "isSupplier": true
     }
   ],
+  "products": [
+    {
+      "name": "موبيل سامسونج الترا 26",
+      "serial": "44444",
+      "barcode": "5026070403",
+      "shortCode": "5035",
+      "categoryId": "موبيلات",
+      "minQuantity": 500,
+      "maxQuantity": 20,
+      "maxDiscountPercentage": 10,
+      "canUseItem": true,
+      "hasExpireDate": false,
+      "isMakeFromManyItems": true,
+      "allowReturn": true,
+      "isStoreItem": true,
+      "canUseDollar": true,
+      "saleUnitId": "قطعة",
+      "purchaseUnitId": "قطعة",
+      "id": "5",
+      "salePrice": 15,
+      "purchasePrice": 15,
+      "wholesalePrice": 20,
+      "halfWholesalePrice": 10,
+      "profitMarginPercentage": 0,
+      "profitMarginValue": 0,
+      "points": 0,
+      "commercialName": "موبيل سامسونج",
+      "originCountry": "مصر",
+      "model": "2025",
+      "marka": "سامسونج",
+      "size": "0",
+      "color": "",
+      "year": "2025",
+      "itemHasEmptyBow": true,
+      "showingArrangement": 5,
+      "description": "موبيل سامسونج"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

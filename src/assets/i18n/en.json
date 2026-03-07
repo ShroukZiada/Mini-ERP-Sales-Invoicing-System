@@ -1,1 +1,13 @@
-{}
+{
+ "Dashboard": "Dashboard",
+ "Customers": "Customers",
+ "items": "items",
+ "addCustomers": "addCustomers",
+ "addItems": "addItems",
+ "editCustomers": "editCustomers",
+ "editItems": "editItems",
+ "deleteCustomers": "deleteCustomers",
+ "deleteItems": "deleteItems",
+ "viewCustomers": "viewCustomers",
+ "viewItems": "viewItems"
+}

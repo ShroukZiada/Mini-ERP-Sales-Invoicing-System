@@ -1,0 +1,31 @@
+<ul class="nav nav-tabs px-3" *ngIf="!tabsPositionBottom">
+ <li class="nav-item" *ngFor="let tab of tabs; let i = index">
+  <a class="nav-link rounded-0" [class.active]="activetabindex === i" (click)="toggleDivs(tab)">
+   {{ tab.name }}
+  </a>
+ </li>
+</ul>
+
+<div class="tab-content mt-3" *ngIf="!tabsPositionBottom">
+ <ng-container *ngIf="tabs[activetabindex]?.componennt"
+  [ngComponentOutlet]="tabs[activetabindex]?.componennt"></ng-container>
+ <ng-container *ngIf="templates.length > 0" [ngTemplateOutlet]="templates[activetabindex]"></ng-container>
+</div>
+<div class="" *ngIf="tabsPositionBottom">
+ <div class="tab-content mt-3 " *ngIf="tabsPositionBottom">
+  <ng-container *ngIf="tabs[activetabindex]?.componennt"
+   [ngComponentOutlet]="tabs[activetabindex]?.componennt"></ng-container>
+  <ng-container style="position:absolute;bottom:0" *ngIf="templates.length > 0"
+   [ngTemplateOutlet]="templates[activetabindex]"></ng-container>
+ </div>
+ <div>
+  <ul class="nav nav-tabs px-3" *ngIf="tabsPositionBottom">
+   <li class="nav-item" *ngFor="let tab of tabs; let i = index">
+    <a class="nav-link nav-link-bottom rounded-0" [class.active]="activetabindex === i" (click)="toggleDivs(tab)">
+     {{ tab.name }}
+    </a>
+   </li>
+  </ul>
+  <button class="btn btn-primary w-100 mt-3">Sumbit</button>
+ </div>
+</div>

@@ -1,1 +1,13 @@
-{}
+{
+ "Dashboard": "لوحه التحكم",
+ "Customers": "العملاء",
+ "items": "المنتجات",
+ "addCustomers": "اضافه عميل",
+ "addItems": "اضافه منتج",
+ "editCustomers": "تعديل عميل",
+ "editItems": "تعديل منتج",
+ "deleteCustomers": "حذف عميل",
+ "deleteItems": "حذف منتج",
+ "viewCustomers": "عرض العملاء",
+ "viewItems": "عرض المنتجات"
+}

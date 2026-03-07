@@ -24,19 +24,18 @@ export class CustomersComponent implements OnInit {
 
   customers: any[] = [];
   columns = [
-    { header: 'ID', field: 'id' },
-    { header: 'Name', field: 'name' },
-    { header: 'Email', field: 'serial' },
-    { header: 'Phone', field: 'phone' },
-    { header: 'Phone', field: 'email' },
-    { header: 'Phone', field: 'address' },
-    { header: 'Phone', field: 'nationalId' },
-    { header: 'Phone', field: 'responsableManName' },
-    { header: 'Phone', field: 'notes' },
-    { header: 'Phone', field: 'isCustomer' },
-    { header: 'Phone', field: 'isSupplier' },
-
-  ];
+    { header: 'Id', field: 'id' },
+    { header: 'الاسم', field: 'name' },
+    { header: 'البريد الإلكتروني', field: 'serial' },
+    { header: 'الهاتف', field: 'phone' },
+    { header: 'البريد الإلكتروني', field: 'email' },
+    { header: 'العنوان', field: 'address' },
+    { header: 'الرقم القومي', field: 'nationalId' },
+    { header: 'اسم المسؤول', field: 'responsableManName' },
+    { header: 'ملاحظات', field: 'notes' },
+    { header: 'عميل', field: 'isCustomer' },
+    { header: 'مورد', field: 'isSupplier' }
+  ]
   ngOnInit(): void {
     this.getAllCustomers();
   }

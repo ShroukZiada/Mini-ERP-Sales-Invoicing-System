@@ -1,0 +1,220 @@
+<section class="p-3" [dir]="'rtl'">
+  <div class="card">
+    <div class="">
+      <div class="">
+        <div class="border-0 p-4">
+          <div class="d-flex align-items-center justify-content-between flex-fill pb-3 border-bottom">
+            <h2 class="fw-bold h3">
+              <span>{{ 'عرض تفاصيل صنف ' }}</span>
+            </h2>
+          </div>
+        </div>
+
+
+        <div class="row px-4">
+          <div class="col-lg-8">
+            <div class="col-lg-8 mb-3">
+              <div class="row row-cols-1 gap-3  flex-wrap">
+                <div class="flex-fill">
+                  <p><strong>اسم الصنف:</strong> {{ protecteList?.name }}</p>
+                  <p><strong>سريال الصنف:</strong> {{ protecteList?.serial || 'غير متوفر' }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-md-12">
+            <div class="col-md-12">
+              <app-toggle-div-top [tabs]="tabs"
+                [templates]="[basicDataTemplate,permissions,itemPriceTemplate,itemInfoTemplate]"></app-toggle-div-top>
+            </div>
+          </div>
+        </div>
+        <ng-template #basicDataTemplate>
+          <div class="container-fluid">
+
+            <div class="row ">
+              <div class="col-4">
+                <strong>اسم الصنف:</strong>
+                <span>{{ protecteList?.name }}</span>
+              </div>
+              <div class="col-4">
+                <strong>سريال الصنف:</strong>
+                <span>{{ protecteList?.serial || 'غير متوفر' }}</span>
+              </div>
+
+              <div class="col-4">
+                <strong>باركود الصنف:</strong>
+                <span>{{ protecteList?.barcode }}</span>
+              </div>
+              <div class="col-4">
+                <strong>الباركود المختصر:</strong>
+                <span>{{ protecteList?.shortCode }}</span>
+              </div>
+
+              <div class="col-4">
+                <strong>التصنيف:</strong>
+                <span>{{ protecteList?.categoryId }}</span>
+              </div>
+              <div class="col-4">
+                <strong>وحدة البيع:</strong>
+                <span>{{ protecteList?.saleUnitId }}</span>
+              </div>
+              <div class="col-4">
+                <strong>وحدة الشراء:</strong>
+                <span>{{ protecteList?.purchaseUnitId }}</span>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template #permissions>
+          <div class="container-fluid">
+
+            <div class="row ">
+              <div class="col-4"> </div>
+              <p><strong>يمكن استخدام الصنف:</strong> {{ protecteList?.canUseItem ? 'نعم' : 'لا' }}</p>
+
+              <div class="col-4">
+                <p><strong>مكون من عدة أصناف:</strong> {{ protecteList?.isMakeFromManyItems ? 'نعم' : 'لا' }}</p>
+              </div>
+              <div class="col-4">
+                <p><strong>يسمح بالإرجاع:</strong> {{ protecteList?.allowReturn ? 'نعم' : 'لا' }}</p>
+              </div>
+              <div class="col-4">
+                <p><strong>صنف مخزني:</strong> {{ protecteList?.isStoreItem ? 'نعم' : 'لا' }}</p>
+              </div>
+              <div class="col-4">
+                <p><strong>يمكن استخدام الدولار:</strong> {{ protecteList?.canUseDollar ? 'نعم' : 'لا' }}</p>
+              </div>
+
+              <div class="col-4">
+                <div class="flex-fill">
+                  <p><strong>الحد الأدنى للكمية:</strong> {{ protecteList?.minQuantity }}</p>
+                </div>
+              </div>
+              <div class="col-4">
+                <p><strong>الحد الأقصى للكمية:</strong> {{ protecteList?.maxQuantity }}</p>
+              </div>
+              <div class="col-4">
+                <p><strong>أقصى نسبة خصم:</strong> {{ protecteList?.maxDiscountPercentage }}</p>
+              </div>
+              <div class="col-4"></div>
+
+            </div>
+          </div>
+
+          <div class="row mt-3">
+          </div>
+        </ng-template>
+
+        <ng-template #itemPriceTemplate>
+          <div class="container-fluid">
+
+            <div class="row ">
+              <div class="col-4"> </div>
+              <p><strong>سعر البيع:</strong> {{ protecteList?.salePrice }}</p>
+
+              <div class="col-4">
+                <p><strong>سعر الشراء :</strong> {{ protecteList?.purchasePrice }}</p>
+              </div>
+              <div class="col-4">
+                <p><strong>سعر الجملة:</strong> {{ protecteList?.wholesalePrice }}</p>
+              </div>
+              <div class="col-4">
+                <p><strong>سعر ننصف الجملة:</strong> {{ protecteList?.halfWholesalePrice }}</p>
+              </div>
+              <div class="col-4">
+                <p><strong>نسبة الربح :</strong> {{ protecteList?.profitMarginPercentage }}</p>
+              </div>
+
+              <div class="col-4">
+                <div class="flex-fill">
+                  <p><strong>قيمة الربح:</strong> {{ protecteList?.profitMarginValue }}</p>
+                </div>
+              </div>
+
+              <div class="col-4"></div>
+
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template #itemInfoTemplate>
+          <div class="container-fluid">
+            <div class="row ">
+              <div class="col-4">
+                وصف الصنف
+                <strong>
+                  <p>{{protecteList.description}}</p>
+                </strong>
+              </div>
+              <div class="col-4">
+                الاسم التجاري
+                <strong>
+                  <p>{{protecteList.commercialName}}</p>
+                </strong>
+              </div>
+              <div class="col-4">
+                بلد المنشأ
+                <strong>
+                  <p>{{protecteList.originCountry}}</p>
+                </strong>
+              </div>
+              <div class="col-4">
+                موديل الصنف
+                <strong>
+                  <p>{{protecteList.model}}</p>
+                </strong>
+              </div>
+              <div class="col-4">
+                العلامة التجارية
+                <strong>
+                  <p>{{protecteList.marka}}</p>
+                </strong>
+              </div>
+              <div class="col-4">
+                المقاس
+                <strong>
+                  <p>{{protecteList.size}}</p>
+                </strong>
+              </div>
+              <div class="col-4">
+                اللون
+                <strong>
+                  <p>{{protecteList.color}}</p>
+                </strong>
+              </div>
+              <div class="col-4">
+                <strong>
+                  <p></p>
+                </strong>
+              </div>
+              <div class="col-4">
+                سنة الانتاج
+                <strong>
+                  <p>{{protecteList.year}}</p>
+                </strong>
+              </div>
+              <div class="col-4">
+                ترتيب عرض الصنف
+                <strong>
+                  <p>{{protecteList.showingArrangement}}</p>
+                </strong>
+              </div>
+              <div class="col-4">
+                ترتيب عرض الصنالصنف يحتوي على عبوة فارغة
+                <strong>
+                  <p>{{protecteList.itemHasEmptyBow}}</p>
+                </strong>
+              </div>
+            </div>
+          </div>
+
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</section>

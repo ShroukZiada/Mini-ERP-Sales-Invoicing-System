@@ -9,10 +9,11 @@ import { CommonModule } from '@angular/common';
 import { SharedTable } from '../../../../shared/shared-table/shared-table';
 import { ToggleDivTopComponentComponent } from '../../../../shared/toggle-div-top.component/toggle-div-top.component.component';
 import { Customer } from '../../../../core/models/customer';
+import { BidiModule } from "@angular/cdk/bidi";
 
 @Component({
   selector: 'app-add-edit-customers',
-  imports: [CommonModule, SharedTable, ReactiveFormsModule, HttpClientModule, ToggleDivTopComponentComponent],
+  imports: [CommonModule, SharedTable, ReactiveFormsModule, HttpClientModule, ToggleDivTopComponentComponent, BidiModule],
   standalone: true,
   templateUrl: './add-edit-customers.html',
   styleUrl: './add-edit-customers.css',

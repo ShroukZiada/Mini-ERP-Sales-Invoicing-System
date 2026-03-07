@@ -1,0 +1,42 @@
+.box {
+ padding: 20px;
+ margin: 10px;
+ text-align: center;
+ border-radius: 8px;
+}
+
+.box1 {
+ background-color: lightblue;
+}
+
+.box2 {
+ background-color: lightcoral;
+}
+
+button {
+ padding: 10px 15px;
+ border: none;
+ background: #007bff;
+ color: white;
+ cursor: pointer;
+ border-radius: 5px;
+ font-size: 16px;
+}
+
+button:hover {
+ background: #0056b3;
+}
+
+::ng-deep .mat-mdc-tab .mdc-tab__text-label {
+ color: white !important;
+}
+
+::ng-deep .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+ color: #3f51b5 !important;
+}
+
+.nav-tabs .nav-link.active {
+ border-top-color: #04A9F5;
+}
+
+/*# sourceMappingURL=toggledivs.component.css.map */

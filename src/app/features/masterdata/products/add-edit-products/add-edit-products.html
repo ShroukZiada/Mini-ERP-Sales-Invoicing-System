@@ -1,1 +1,467 @@
-<p>add-edit-products works!</p>
+<section class="p-3" [dir]="'rtl'">
+	<div class="card">
+		<div class="">
+			<div class="">
+				<div class="border-0 p-4">
+					<div class="d-flex align-items-center justify-content-between flex-fill pb-3 border-bottom">
+						<h2 class="fw-bold h3">
+							@if (productId) {
+							<span>{{ 'تعديل صنف جديد' }}</span>
+							}@else {
+							<span>{{ 'إضافة صنف جديد' }}</span>
+							}
+						</h2>
+					</div>
+				</div>
+
+				<form [formGroup]="itemCardBaiscForm">
+					<div class="row px-4">
+						<div class="col-lg-8">
+							<div class="col-lg-8 mb-3">
+								<div class="row row-cols-1 gap-3  flex-wrap">
+									<div class="flex-fill">
+										<label class="form-label">
+											{{ 'إسم الصنف' }} <span class="text-danger">*</span>
+										</label>
+										<input type="text" class="form-control" formControlName="name" [ngClass]="{
+      'isInvalid-input': itemCardBaiscForm.get('name')?.touched && itemCardBaiscForm.get('name')?.value == null,
+      'border-danger': itemCardBaiscForm.get('name')?.touched && itemCardBaiscForm.get('name')?.value == null}" />
+
+										@if (itemCardBaiscForm.get('name')?.touched &&
+										itemCardBaiscForm.get('name')?.value == null) {
+										<p class="text-danger mx-0 mb-0 mt-1 p-0">
+											{{ 'إسم الصنف مطلوب' }}
+										</p> }
+
+									</div>
+
+									<div class="flex-fill">
+										<label class="form-label">{{ 'سريال الصنف'}}<span
+												class="text-danger">*</span></label>
+										<input type="text" class="form-control" formControlName="serial" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row mt-2">
+						<div class="col-md-12">
+							<div class="col-md-12">
+								<app-toggle-div-top [tabs]="tabs"
+									[templates]="[basicDataTemplate,permissions,itemPriceTemplate,itemInfoTemplate]"></app-toggle-div-top>
+							</div>
+						</div>
+					</div>
+					<ng-template #basicDataTemplate>
+						<div class="template p-4 pt-1">
+							<div class="row">
+								<div class="flex-fill">
+									<div class="row">
+
+										<!-- الباركود -->
+										<div class="col-lg-12 mb-3 d-flex gap-3">
+											<div class="flex-fill">
+												<label class="form-label">باركود الصنف</label>
+												<input type="text" class="form-control" formControlName="barcode" />
+											</div>
+
+											<div class="flex-fill">
+												<label class="form-label">الباركود المختصر</label>
+												<input type="text" class="form-control" formControlName="shortCode" />
+											</div>
+										</div>
+
+										<!-- اسم التصنيف -->
+										<div class="col-lg-12 mb-3">
+											<label class="form-label">
+												اسم التصنيف <span class="text-danger">*</span>
+											</label>
+											<select formControlName="categoryId" class="form-control">
+												<option value="0" disabled selected>
+													اختر اسم التصنيف
+												</option>
+												<option *ngFor="let category of categoryList" [value]="category.name">
+													{{ category.name }}
+												</option>
+											</select>
+										</div>
+
+										<!-- وحدة البيع -->
+										<div class="col-lg-6 mb-3">
+											<label class="form-label">
+												وحدة البيع <span class="text-danger">*</span>
+											</label>
+											<select formControlName="saleUnitId" class="form-control">
+												<option value="0" disabled selected>
+													اختر وحدة البيع
+												</option>
+												<option *ngFor="let unit of saleUnit" [value]="unit.name">
+													{{ unit.name }}
+												</option>
+											</select>
+										</div>
+
+										<!-- وحدة الشراء -->
+										<div class="col-lg-6 mb-3">
+											<label class="form-label">
+												وحدة الشراء <span class="text-danger">*</span>
+											</label>
+											<select formControlName="purchaseUnitId" class="form-control">
+												<option value="0" disabled selected>
+													اختر وحدة الشراء
+												</option>
+												<option *ngFor="let unit of PurchaseUnit" [value]="unit.name">
+													{{ unit.name }}
+												</option>
+											</select>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</ng-template>
+
+					<ng-template #permissions>
+						<div class="template p-4">
+							<fieldset class="border p-3 rounded mb-4">
+								<legend class="float-none w-auto px-2">صلاحيات الصنف</legend>
+								<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center">
+									<div
+										class="form-check mb-3 form-switch ps-3 d-flex align-items-center justify-content-between gap-3">
+										<label class="form-label" for="canUseItem">
+											يمكن استخدام الصنف
+										</label>
+										<input formControlName="canUseItem"
+											class="form-check-input mx-1 custom-check-input" type="checkbox"
+											role="switch" id="canUseItem" checked>
+									</div>
+
+									<div
+										class="form-check mb-3 form-switch ps-md-3 d-flex align-items-center justify-content-between gap-3">
+										<label class="form-label" for="hasExpireDate">
+											الصنف له تاريخ صلاحية
+										</label>
+										<input formControlName="hasExpireDate"
+											class="form-check-input mx-1 custom-check-input" type="checkbox"
+											role="switch" id="hasExpireDate" checked>
+									</div>
+
+									<div
+										class="form-check mb-3 form-switch ps-md-3 d-flex align-items-center justify-content-between gap-3">
+										<label class="form-label" for="isMakeFromManyItems">
+											الصنف مُكوَّن من عدة أصناف
+										</label>
+										<input formControlName="isMakeFromManyItems"
+											class="form-check-input mx-1 custom-check-input" type="checkbox"
+											role="switch" id="isMakeFromManyItems" checked>
+									</div>
+
+									<div
+										class="form-check mb-3 form-switch ps-md-3 d-flex align-items-center justify-content-between gap-3">
+										<label class="form-label" for="allowReturn">
+											يسمح بإرجاع الصنف
+										</label>
+										<input formControlName="allowReturn"
+											class="form-check-input mx-1 custom-check-input" type="checkbox"
+											role="switch" id="allowReturn" checked>
+									</div>
+
+									<div
+										class="form-check mb-3 form-switch ps-md-3 d-flex align-items-center justify-content-between gap-3">
+										<label class="form-label" for="isStoreItem">
+											صنف مخزني
+										</label>
+										<input formControlName="isStoreItem"
+											class="form-check-input mx-1 custom-check-input" type="checkbox"
+											role="switch" id="isStoreItem" checked>
+									</div>
+
+									<div
+										class="form-check mb-3 form-switch ps-md-3 d-flex align-items-center justify-content-between gap-3">
+										<label class="form-label" for="canUseDollar">
+											يمكن استخدام الدولار
+										</label>
+										<input formControlName="canUseDollar"
+											class="form-check-input mx-1 custom-check-input" type="checkbox"
+											role="switch" id="canUseDollar" checked>
+									</div>
+
+								</div>
+								```
+
+							</fieldset>
+
+							<div class="col-lg-12 mb-3">
+								<div class="row row-cols-lg-3 row-gap-2">
+
+									```
+									<div>
+										<label class="form-label">الحد الأدنى للكمية</label>
+										<input type="number" class="form-control" formControlName="minQuantity" />
+										@if (itemCardBaiscForm.get('minQuantity')?.getError('min')) {
+										<p class="text-danger mx-0 mb-0 mt-1 p-0">
+											لا يسمح بالقيم السالبة
+										</p>
+										}
+									</div>
+
+									<div>
+										<label class="form-label">الحد الأقصى للكمية</label>
+										<input type="number" class="form-control" formControlName="maxQuantity" />
+										@if (itemCardBaiscForm.get('maxQuantity')?.getError('min')) {
+										<p class="text-danger mx-0 mb-0 mt-1 p-0">
+											لا يسمح بالقيم السالبة
+										</p>
+										}
+									</div>
+
+									<div>
+										<label class="form-label">أقصى نسبة خصم</label>
+										<input type="number" class="form-control"
+											formControlName="maxDiscountPercentage" />
+										@if (itemCardBaiscForm.get('maxDiscountPercentage')?.getError('min')) {
+										<p class="text-danger mx-0 mb-0 mt-1 p-0">
+											لا يسمح بالقيم السالبة
+										</p>
+										}
+									</div>
+
+								</div>
+								```
+
+							</div>
+						</div>
+
+
+					</ng-template>
+
+					<ng-template #itemPriceTemplate>
+						<div class="template">
+							<form [formGroup]="itemPriceForm">
+								<div class="p-4 pt-1">
+									<div class="row">
+										<div class="flex-fill">
+											<div class="row">
+												<div class="col-lg-12 mb-3">
+													<div class="d-flex gap-3 flex-wrap">
+
+														<div class="flex-fill">
+															<label class="form-label">سعر البيع</label>
+															<input type="number" class="form-control"
+																formControlName="salePrice" />
+															@if (itemPriceForm.get('salePrice')?.getError('min')) {
+															<p class="text-danger mx-0 mb-0 mt-1 p-0">
+																لا يسمح بالقيم السالبة
+															</p>
+															}
+														</div>
+
+														<div class="flex-fill">
+															<label class="form-label">سعر الشراء</label>
+															<input type="number" class="form-control"
+																formControlName="purchasePrice" />
+															@if (itemPriceForm.get('purchasePrice')?.getError('min')) {
+															<p class="text-danger mx-0 mb-0 mt-1 p-0">
+																لا يسمح بالقيم السالبة
+															</p>
+															}
+														</div>
+
+													</div>
+												</div>
+
+												<div class="col-lg-12 mb-3">
+													<div class="d-flex gap-3 flex-wrap">
+
+														<div class="flex-fill">
+															<label class="form-label">سعر الجملة</label>
+															<input type="number" class="form-control"
+																formControlName="wholesalePrice" />
+															@if (itemPriceForm.get('wholesalePrice')?.getError('min')) {
+															<p class="text-danger mx-0 mb-0 mt-1 p-0">
+																لا يسمح بالقيم السالبة
+															</p>
+															}
+														</div>
+
+														<div class="flex-fill">
+															<label class="form-label">سعر نصف الجملة</label>
+															<input type="number" class="form-control"
+																formControlName="halfWholesalePrice" />
+															@if
+															(itemPriceForm.get('halfWholesalePrice')?.getError('min')) {
+															<p class="text-danger mx-0 mb-0 mt-1 p-0">
+																لا يسمح بالقيم السالبة
+															</p>
+															}
+														</div>
+
+													</div>
+												</div>
+
+												<div class="col-lg-12 mb-3">
+													<div class="d-flex gap-3 flex-wrap">
+
+														<div class="flex-fill">
+															<label class="form-label">نسبة الربح</label>
+															<input readonly type="number" class="form-control"
+																formControlName="profitMarginPercentage" />
+															@if
+															(itemPriceForm.get('profitMarginPercentage')?.getError('min'))
+															{
+															<p class="text-danger mx-0 mb-0 mt-1 p-0">
+																لا يسمح بالقيم السالبة
+															</p>
+															}
+														</div>
+
+														<div class="flex-fill">
+															<label class="form-label">قيمة الربح</label>
+															<input readonly type="number" class="form-control"
+																formControlName="profitMarginValue" />
+															@if
+															(itemPriceForm.get('profitMarginValue')?.getError('min')) {
+															<p class="text-danger mx-0 mb-0 mt-1 p-0">
+																لا يسمح بالقيم السالبة
+															</p>
+															}
+														</div>
+
+													</div>
+												</div>
+
+											</div>
+										</div>
+										```
+
+									</div>
+								</div>
+
+							</form>
+						</div>
+					</ng-template>
+
+					<ng-template #itemInfoTemplate>
+						<div class="template">
+							<form [formGroup]="itemInfoForm">
+								<div class="p-4 pt-1">
+									<div class="row">
+										<div class="flex-fill">
+											<div class="row">
+												<div class="col-lg-12 mb-3">
+													<div>
+														<label class="form-label">وصف الصنف</label>
+														<textarea formControlName="description"
+															class="form-control resize-none" rows="4"></textarea>
+													</div>
+												</div>
+
+												<div class="col-lg-12 mb-3">
+													<div class="d-flex gap-3 flex-wrap">
+
+														<div class="flex-fill">
+															<label class="form-label">الاسم التجاري</label>
+															<input type="text" class="form-control"
+																formControlName="commercialName" />
+														</div>
+
+														<div class="flex-fill">
+															<label class="form-label">بلد المنشأ</label>
+															<input type="text" class="form-control"
+																formControlName="originCountry" />
+														</div>
+
+													</div>
+												</div>
+
+												<div class="col-lg-12 mb-3">
+													<div class="d-flex gap-3 flex-wrap">
+
+														<div class="flex-fill">
+															<label class="form-label">موديل الصنف</label>
+															<input type="text" class="form-control"
+																formControlName="model" />
+														</div>
+
+														<div class="flex-fill">
+															<label class="form-label">العلامة التجارية</label>
+															<input type="text" class="form-control"
+																formControlName="marka" />
+														</div>
+
+													</div>
+												</div>
+
+												<div class="col-lg-12 mb-3">
+													<div class="d-flex gap-3 flex-wrap">
+
+														<div class="flex-fill">
+															<label class="form-label">المقاس</label>
+															<input type="text" class="form-control"
+																formControlName="size" />
+														</div>
+
+														<div class="flex-fill">
+															<label class="form-label">اللون</label>
+															<input type="text" class="form-control"
+																formControlName="color" />
+														</div>
+
+													</div>
+												</div>
+
+												<div class="col-lg-12 row row-cols-lg-3 mb-3 align-items-end row-gap-2">
+
+													<div class="flex-fill">
+														<label class="form-label">سنة الإنتاج</label>
+														<input type="text" class="form-control"
+															formControlName="year" />
+													</div>
+
+													<div class="flex-fill">
+														<label class="form-label">ترتيب عرض الصنف</label>
+														<input type="number" class="form-control"
+															formControlName="showingArrangement" />
+													</div>
+
+													<div
+														class="form-check form-switch ps-3 d-flex align-items-center gap-3">
+														<label class="form-label" for="itemHasEmptyBow">
+															الصنف يحتوي على عبوة فارغة
+														</label>
+														<input formControlName="itemHasEmptyBow"
+															class="form-check-input mx-1" type="checkbox" role="switch"
+															id="itemHasEmptyBow" checked>
+													</div>
+
+												</div>
+
+											</div>
+										</div>
+										```
+
+									</div>
+								</div>
+
+							</form>
+						</div>
+					</ng-template>
+
+					<div class="p-4 d-flex align-items-center justify-content-around gap-2">
+						<button type="button" class="btn btn-light" (click)="close()">إغلاق</button>
+						<button type="submit" (click)="onSubmit()" class="btn "
+							[class]="_itemId? 'btn-secondary':'btn-primary'">
+							@if (!_itemId) {
+							<span>حفظ الصنف</span>
+							}@else {
+							<span>تعديل الصنف</span>
+							}
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
