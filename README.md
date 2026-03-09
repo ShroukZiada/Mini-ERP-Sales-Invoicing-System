@@ -35,7 +35,7 @@
 1. تثبيت الحزم المطلوبة:
    ```bash
    npm install
+npm json-server --watch db.json --port 3000
 
-   تشغيل JSON Server للـ backend الوهمي:
+2. تشغيل JSON Server للـ backend الوهمي:
 
-npx json-server --watch db.json --port 3000
