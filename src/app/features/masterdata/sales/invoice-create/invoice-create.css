@@ -1,0 +1,13 @@
+/* في invoice-create.css */
+.readonly-input {
+ background-color: #f0f0f0;
+ /* لون رمادي فاتح يوضح أنه غير قابل للتعديل */
+ color: #555;
+ /* لون الخط مختلف قليلًا */
+ border: none;
+ /* إزالة الحدود */
+ text-align: center;
+ /* لمحاذاة القيمة بالوسط */
+ pointer-events: none;
+ /* لمنع أي تفاعل مع الحقل */
+}

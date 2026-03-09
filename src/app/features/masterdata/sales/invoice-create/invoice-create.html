@@ -1,1 +1,93 @@
-<p>invoice-create works!</p>
+<section dir="rtl">
+
+  <ng-container>
+    <form [formGroup]="invoiceForm">
+      <table class="table text-center shadow-sm">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>الصنف</th>
+            <th>السعر</th>
+            <th>الكمية</th>
+            <th>الخصم</th>
+            <th>فرق القيمة</th>
+            <th>إجمالي المبيعات</th>
+            <th>إجمالي الخصم</th>
+            <th>الصافي</th>
+            <th>إجراءات</th>
+          </tr>
+        </thead>
+
+
+        <!-- عرض البيانات بدون Inputs -->
+        <tbody *ngIf="invoiceLinesList.length > 0">
+          <tr *ngFor="let item of invoiceLinesList; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ item.itemName }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.discountPercentage }} <span *ngIf="item.discountIsPercentage">%</span></td>
+            <td>{{ item.valueDifference }}</td>
+            <td>{{ item.totalSales }}</td>
+            <td>{{ item.totalDiscount }}</td>
+            <td>{{ item.totalNet }}</td>
+            <td>
+              <button class="btn btn-sm btn-success" (click)="editLine(i)">تعديل</button>
+              <button class="btn btn-sm btn-danger" (click)="deleteLineFromInvoice(i)">حذف</button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot formArrayName="items">
+          <tr *ngFor="let item of invoiceLines.controls; let i = index" [formGroupName]="i">
+            <td>{{ i + 1 }}</td>
+            <td>
+              <select class="form-select" formControlName="itemId" (change)="onItemChange(i)">
+                <option *ngFor="let it of itemoption" [value]="it.itemId">{{ it.name }}</option>
+              </select>
+            </td>
+            <td>
+              <input type="number" min="0" class="form-control" formControlName="price"
+                (input)="sanitizeNumberInput($event, i, 'price')" />
+            </td>
+
+            <td>
+              <input type="number" min="0" class="form-control" formControlName="quantity"
+                (input)="sanitizeNumberInput($event, i, 'quantity')" />
+            </td>
+            <td class="d-flex align-items-center justify-content-center">
+              <input type="checkbox" formControlName="discountIsPercentage" class="form-check-input me-1 order-1"
+                (change)="calculateLine(i)" />
+              <div class="input-group">
+                <input type="number" class="form-control" formControlName="discountPercentage"
+                  (input)="sanitizeNumberInput($event, i, 'discountPercentage')" />
+
+                <i class="bi bi-percent position-absolute top-50 translate-middle-y" style="inset-inline-end: 3px"
+                  *ngIf="invoiceLines.at(i).get('discountIsPercentage')?.value">
+                  %
+                </i>
+              </div>
+            </td>
+
+            <td>
+              <input type="number" class="form-control readonly-input" formControlName="valueDifference" readonly />
+            </td>
+            <td>{{ item.get('totalSales')?.value }}</td>
+            <td>{{ item.get('totalDiscount')?.value }}</td>
+            <td>{{ item.get('totalNet')?.value }}</td>
+            <td>
+              <button type="button" class="btn btn-primary btn-sm" *ngIf="!isEditMode"
+                (click)="addlineToInvoice()">إضافة</button>
+              <!-- زر التعديل -->
+              <button *ngIf="isEditMode" type="button" class="btn btn-success btn-sm" (click)="updateLine()">
+                تعديل
+              </button>
+            </td>
+          </tr>
+
+        </tfoot>
+
+      </table>
+    </form>
+  </ng-container>
+
+</section>

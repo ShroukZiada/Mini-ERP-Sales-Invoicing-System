@@ -9,6 +9,7 @@ import { CustomersComponent } from './customers/customers.component';
 import { AddEditProducts } from './products/add-edit-products/add-edit-products';
 import { ProductsComponent } from './products/products.component';
 import { HttpClientModule } from '@angular/common/http';
+import { InvoiceCreate } from './sales/invoice-create/invoice-create';
 
 @NgModule({
   declarations: [],
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProductsComponent,
     CustomersComponent,
     AddEditCustomers,
-    HttpClientModule
+    HttpClientModule,
+    InvoiceCreate
   ]
 })
 export class MasterdataModule { }

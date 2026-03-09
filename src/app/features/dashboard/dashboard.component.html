@@ -1,3 +1,32 @@
-<strong class=" text-shadow-amber-500">
-  dashboard works!
-</strong>
+<div class="dashboard-container" dir="rtl">
+  <h2>لوحة التحكم</h2>
+
+  <!-- KPI Cards -->
+  <div class="kpi-cards">
+    <div class="kpi-card">
+      <h3>إجمالي المبيعات</h3>
+      <p>{{ totalSales }}</p>
+    </div>
+    <div class="kpi-card">
+      <h3>إجمالي الخصومات</h3>
+      <p>{{ totalDiscount }}</p>
+    </div>
+    <div class="kpi-card">
+      <h3>إجمالي الصافي</h3>
+      <p>{{ totalNet }}</p>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="charts-grid">
+    <div class="chart-card">
+      <canvas id="salesChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <canvas id="growthChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <canvas id="categoryChart"></canvas>
+    </div>
+  </div>
+</div>

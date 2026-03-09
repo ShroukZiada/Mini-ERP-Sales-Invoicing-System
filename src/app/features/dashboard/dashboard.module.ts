@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard.component'; // Standalone
 @NgModule({
   imports: [
     CommonModule,
+
     DashboardComponent, // Standalone component يتحط هنا
     RouterModule.forChild([
       { path: '', component: DashboardComponent }
