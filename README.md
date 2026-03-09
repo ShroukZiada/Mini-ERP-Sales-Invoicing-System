@@ -31,11 +31,23 @@
 - **Styling**: Bootstrap و Angular Material  
 
 ## طريقة الاستخدام
+## تشغيل المشروع
 
-1. تثبيت الحزم المطلوبة:
-   ```bash
-   npm install
-npm json-server --watch db.json --port 3000
+### 1- تثبيت الحزم
+npm install
+
+### 2- تشغيل JSON Server
+npx json-server --watch db.json --port 3000
+
+Backend API:
+http://localhost:3000
+
+### 3- تشغيل Angular
+ng serve
+
+Application:
+http://localhost:4200 
+
 
 2. تشغيل JSON Server للـ backend الوهمي:
 
